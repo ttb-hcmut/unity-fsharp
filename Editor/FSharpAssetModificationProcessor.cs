@@ -36,6 +36,7 @@ namespace Gilzoide.FSharp.Editor
         private static bool ShouldGenerateFsproj(string assetName)
         {
             return assetName.EndsWith(".fs", true, CultureInfo.InvariantCulture)
+                || assetName.EndsWith(".fsi", true, CultureInfo.InvariantCulture)
                 || assetName.EndsWith(".dll", true, CultureInfo.InvariantCulture)
                 || assetName.EndsWith(".asmdef", true, CultureInfo.InvariantCulture);
         }

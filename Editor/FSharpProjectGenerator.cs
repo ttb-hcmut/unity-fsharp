@@ -72,12 +72,18 @@ namespace Gilzoide.FSharp.Editor
             var compileItems = project.AddElement("ItemGroup");
             foreach (string source in FSharpSettings.Instance.PlayerScriptPaths)
             {
+                if (File.Exists(source + "i")) {
+                    compileItems.AddElement("Compile", "Include", source + "i");
+                }
                 compileItems.AddElement("Compile", "Include", source);
             }
 
             var editorCompileItems = project.AddElement("ItemGroup", "Condition", " '$(Platform)' == 'Editor' ");
             foreach (string source in FSharpSettings.Instance.EditorScriptPaths)
             {
+                if (File.Exists(source + "i")) {
+                    editorCompileItems.AddElement("Compile", "Include", source + "i");
+                }
                 editorCompileItems.AddElement("Compile", "Include", source);
             }
 
